@@ -1,5 +1,132 @@
 //====================================================================================================
 
+.footer {
+    background: #211E29;
+    @include adaptiveValue("padding-top", 108, 60);
+    @include adaptiveValue("padding-bottom", 190, 90);
+    @include adaptiveValue("font-size", 20, 16, $containerWidth, 992, 2);
+    @include adaptiveValue("font-size", 20, 16, 992, 320, 3);
 
+    line-height: math.div(24, 20);
+
+    &__container {}
+
+    &__inner {
+
+        display: grid;
+        row-gap: rem(25);
+        @include adaptiveValue("column-gap", 75, 25, $maxWidth, $containerWidth);
+        grid-template-columns: minmax(rem(200), 1fr) max-content max-content minmax(rem(200), 1fr);
+
+        @media (max-width: $tablet) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media (max-width:$mobileSmall) {
+            grid-template-columns: auto;
+        }
+
+    }
+
+    &__col {
+
+        display: flex;
+        flex-direction: column;
+        gap: rem(25);
+
+        @media (max-width: $tablet) and (min-width: $mobileSmall) {
+
+            &:first-child,
+            &:last-child {
+                grid-column: 1 / -1;
+            }
+        }
+
+    }
+
+    &__title {
+
+        font-weight: 700;
+        @include adaptiveValue("font-size", 30, 20, $containerWidth, 992, 2);
+        @include adaptiveValue("font-size", 30, 20, 992, 320, 3);
+        line-height: math.div(37, 30);
+
+        margin-bottom: rem(25);
+
+        &::before {
+            display: none;
+        }
+
+        @media (max-width:$mobileSmall) {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            align-items: center;
+
+            &::before {
+                display: block;
+                font-size: em(11, 30);
+                margin-left: em(11, 11);
+
+                transition: all 0.2s ease 0s;
+            }
+
+            &._spoller-active::before {
+                transform: scaleY(-1);
+            }
+        }
+
+    }
+
+    &__text {}
+
+    &__list {}
+
+    &__item {
+        &:not(:last-child) {
+            margin-bottom: rem(20);
+        }
+    }
+
+    &__link {
+
+        transition: all 0.2s ease 0s;
+
+        &:hover {
+            color: $accentTextColor;
+        }
+    }
+
+    &__socials {
+        display: inline-flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: rem(15);
+
+    }
+
+    &__socials-item {}
+
+    &__socials-link {
+        font-size: rem(15);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: rem(40);
+        height: rem(40);
+        border-radius: 50%;
+        background: $mainTextColor;
+        color: #211E29;
+
+        transition: all 0.2s ease 0s;
+
+        &:hover {
+            background: $accentTextColor
+        }
+
+    }
+}
 
 //====================================================================================================
