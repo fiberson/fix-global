@@ -57,6 +57,7 @@
 		"sass": "latest",
 		"sass-loader": "latest",
 		"smooth-scroll": "latest",
+		"smoothscroll-for-websites": "^1.4.10",
 		"string-replace-loader": "latest",
 		"style-loader": "latest",
 		"swiper": "latest",

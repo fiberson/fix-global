@@ -1,5 +1,65 @@
 // Заголовки, общие БЄМ блоки и проче...
 
+// Анимационные эффекты
+
+._anim-fade {
+    opacity: 0;
+    transition: opacity .8s, transform .8s;
+
+    &._watcher-view,
+    ._watcher-view & {
+        opacity: 1;
+    }
+}
+
+._anim-top {
+    transform: translateY(-5vh);
+    opacity: 0;
+    transition: opacity .8s, transform .8s;
+
+    &._watcher-view,
+    ._watcher-view & {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+._anim-left {
+    transform: translateX(-10vw);
+    opacity: 0;
+    transition: opacity .8s, transform .8s;
+
+    &._watcher-view,
+    ._watcher-view & {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+._anim-right {
+    transform: translateX(10vw);
+    opacity: 0;
+    transition: opacity .8s, transform .8s;
+
+    &._watcher-view,
+    ._watcher-view & {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+._anim-bottom {
+    transform: translateY(5vw);
+    opacity: 0;
+    transition: opacity .8s, transform .8s;
+
+    &._watcher-view,
+    ._watcher-view & {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
 .logo {
     display: inline-block;
 }
@@ -34,7 +94,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(90deg, #085078, $accentTextColor);
+        background: linear-gradient(90deg, #60acd4, $accentTextColor);
 
         opacity: 0;
         visibility: hidden;
@@ -47,5 +107,71 @@
             opacity: 1;
             visibility: visible;
         }
+    }
+}
+
+.heading {
+    font-size: rem(40);
+    line-height: math.div(49, 40);
+    text-align: center;
+    margin-bottom: em(47, 40);
+
+    position: relative;
+
+    &__bg-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: rem(200);
+        line-height: .7;
+
+        white-space: nowrap;
+
+        mix-blend-mode: overlay;
+    }
+
+    &__sub {
+        font-size: rem(25);
+        line-height: math.div(30, 25);
+        margin-bottom: em(10, 25);
+    }
+
+    &__title {
+        font-weight: 700;
+    }
+
+    &--align-left {
+        text-align: left;
+    }
+
+    &--bg-text-above {
+        .heading__bg-text {
+            top: auto;
+            transform: translate(-50%, 0);
+
+            bottom: 50%;
+        }
+    }
+}
+
+.backlight {
+    position: relative;
+
+    &::before,
+    &::after {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+
+        // background: url("@img/decor/backlight/turquoise.svg") 50% 50% / contain no-repeat;
+        @include adaptiveValue("width", 1850, 1000);
+        @include adaptiveValue("height", 1850, 1000);
+        top: 50%;
+        left: 50%;
     }
 }

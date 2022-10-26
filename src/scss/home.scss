@@ -1,3 +1,244 @@
 //====================================================================================================
 
+.page {
+    &__home-hero {}
+
+    &__members {
+        padding: rem(300) 0 rem(150);
+    }
+}
+
+//====================================================================================================
+
+.home-hero {
+    height: 100vh;
+    max-height: rem(1080);
+
+    &__container {
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        gap: rem(30);
+    }
+
+    &__body {
+        @include adaptiveValue("padding-top", 120, 92, $maxWidth, $containerWidth);
+        flex: 1 1 auto;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @include adaptiveValue("gap", 50, 15);
+
+        @media (min-width:$mobile) {
+            >* {
+                flex-grow: 1;
+            }
+        }
+
+        @media (orientation: landscape) and (max-width: em(1300)) {
+            height: 100vh;
+            max-height: rem(1080);
+        }
+
+        @media (max-width:$mobileSmall) {
+            flex-direction: column-reverse;
+            align-items: stretch;
+            justify-content: flex-end;
+        }
+
+    }
+
+    &__content {}
+
+    &__title {
+        font-weight: 600;
+        @include adaptiveValue("font-size", 85, 40);
+        line-height: math.div(104, 85);
+        white-space: nowrap;
+    }
+
+    &__desc {
+        @include adaptiveValue("font-size", 24, 21);
+        line-height: math.div(29, 24);
+
+        @include adaptiveValue("margin-bottom", 75, 25);
+    }
+
+    &__text {
+
+        font-size: rem(15);
+        line-height: math.div(18, 15);
+        max-width: rem(420);
+
+        @include adaptiveValue("margin-bottom", 65, 25);
+    }
+
+    &__btn {}
+
+    &__img-box {
+        display: flex;
+        max-width: rem(660);
+
+        position: relative;
+
+        &.backlight {
+            &::before {
+                content: "";
+                background: url("@img/decor/backlight/turquoise.svg") 50% 50% / contain no-repeat;
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0;
+                transition: transform 1.5s ease 0s, opacity .8s ease 0s;
+            }
+
+            &._watcher-view {
+                &::before {
+                    transform: translate(-50%, -50%) scale(1);
+                    opacity: 1;
+                    transition: transform 1.5s ease .4s, opacity 1.5s ease .4s;
+                }
+            }
+        }
+
+        @media (max-width:$mobileSmall) {
+            align-self: center;
+            width: 70%;
+        }
+    }
+
+    &__img-diamond {
+        width: 71%;
+
+        transition: opacity .3s 0s, transform .3s 0s;
+
+        &._watcher-view,
+        ._watcher-view & {
+            transition: opacity .8s .2s, transform .8s .2s;
+        }
+    }
+
+    &__img-gold {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: -10vw;
+        z-index: -1;
+
+        width: 53%;
+
+        opacity: 0;
+        transition: opacity .3s 0s, right .3s 0s;
+
+        &._watcher-view,
+        ._watcher-view & {
+            right: 0;
+            opacity: 1;
+            transition: opacity .8s .3s, right .8s .3s;
+        }
+    }
+
+    &__ticker {
+        margin-bottom: rem(15);
+    }
+
+    @media (orientation: landscape) and (max-width: em(1300)) {
+        height: auto;
+        max-height: none;
+    }
+}
+
+.ticker {
+
+    &__inner {
+        background: #030412;
+        @include adaptiveValue("border-radius", 23, 10);
+        @include adaptiveValue("padding-top", 30, 20, $maxWidth, $containerWidth);
+        @include adaptiveValue("padding-left", 70, 15, $maxWidth, 320);
+        @include adaptiveValue("padding-right", 70, 15, $maxWidth, 320);
+        @include adaptiveValue("padding-bottom", 55, 25, $maxWidth, $containerWidth);
+
+        transition: opacity .3s 0s, transform .3s 0s;
+
+        &._watcher-view,
+        ._watcher-view & {
+            transition: opacity .8s .4s, transform .8s .4s;
+        }
+    }
+
+    &__slider {}
+
+    &__wrapper {
+        transition-timing-function: linear;
+    }
+
+    &__slide {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+
+        img {
+            max-width: 100%;
+        }
+    }
+}
+
+
+//====================================================================================================
+
+.members {
+    &__container {
+        position: relative;
+    }
+
+    &__heading {
+        // margin-bottom: em(75, 54);
+    }
+
+    &__slider {
+        position: relative;
+    }
+
+    &__slider {}
+
+    &__wrapper {}
+
+    &__slide {
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__pagination {
+
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: rem(14);
+        grid-auto-rows: rem(14);
+        justify-content: center;
+        column-gap: rem(18);
+
+        margin-top: rem(40);
+        margin-bottom: rem(5);
+
+        .swiper-pagination-bullet {
+            margin: 0;
+
+            cursor: pointer;
+            background: #fff;
+            border-radius: 20px;
+
+            transition: all 0.3s ease 0s;
+            opacity: 0.2;
+
+            &-active {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
 //====================================================================================================
