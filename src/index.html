@@ -27,8 +27,14 @@
                             </a>
                         </div>
                         <div class="home-hero__img-box backlight" data-watch>
-                            <img class="home-hero__img-diamond _anim-right" src="@img/content/diamond.png" alt="">
-                            <img class="home-hero__img-gold" src="@img/content/gold-blur.png" alt="">
+                            <!-- При сборке галп обернёт img в picture, поэтому
+                            лучше обернуть каждый img -->
+                            <div class="home-hero__img-diamond _anim-right">
+                                <img src="@img/content/diamond.png" alt="">
+                            </div>
+                            <div class="home-hero__img-gold">
+                                <img src="@img/content/gold-blur.png" alt="">
+                            </div>
                         </div>
                     </div>
                     <div class="home-hero__ticker ticker" data-watch>
@@ -53,47 +59,101 @@
                     </div>
                 </div>
             </section>
+            <section class="page__history history">
+                <div class='history__container'>
+                    <div class="history__img-box backlight" data-watch>
+                        <div class="history__img _anim-top">
+                            <img src="@img/content/history.png" alt="">
+                        </div>
+                    </div>
+                    <div class="history__body backlight" data-watch>
+                        <div class="history__body-content">
+                            <div class="history__heading heading heading--align-left">
+                                <p class="heading__sub _anim-top">
+                                    A brief history of cryptocurrency
+                                </p>
+                                <h2 class="heading__title _anim-top">
+                                    Ten thousand bitcoin
+                                    for 2 large pizzas – does it
+                                    even sound real?
+                                </h2>
+                            </div>
+                            <div class="history__text">
+                                <p data-watch>
+                                    If you think about it now, when crypto is so popular, it sounds crazy. In the years
+                                    that have passed since then, cryptocurrency has gone a long way.
+                                </p>
+                                <p data-watch>
+                                    In February 2011, it hit the $1.06 milestone, rising up to $8.89 in May the same
+                                    year. The price continued to grow steadily: $434 in January 2016, $998 in January
+                                    2017, $20,000 in December 2017.
+                                </p>
+                                <p data-watch>
+                                    And it just skyrocketed up to $65,000 in 2021. Crazy if you think it all started
+                                    with the white paper called “Bitcoin – A Peer To Peer Electronic Cash System”
+                                    written by the so-called Satoshi Nakamoto.
+                                </p>
+                                <p data-watch>
+                                    At the moment, the market is currently expanding, even though the adoption worldwide
+                                    is only 4.2% (more than 320 million people using cryptocurrency around the world).
+                                    Alongside the crypto market, the NFTs market evolved as well. It was during the
+                                    pandemic when NFTs gained a lot of popularity, both for already crypto owners and
+                                    newcomers to this field.
+                                </p>
+                                <p class="history__text-accent" data-watch>
+                                    Don’t miss out on the chance to own one or more Fix Global NFT!
+                                </p>
+                            </div>
+                        </div>
+                        <div class="history__body-img-box" data-watch>
+                            <div class="history__body-img">
+                                <img src="@img/decor/bitcoin.svg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <section class="page__members members">
                 <div class="members__container">
-                    <div class="members__heading heading">
-                        <p class="heading__sub">
+                    <div class="members__heading heading" data-watch>
+                        <p class="heading__sub _anim-top">
                             Some of the benefits of being a NFT Global holder
                         </p>
-                        <h2 class="heading__title">
+                        <h2 class="heading__title _anim-top">
                             Our members who own NFTs
                         </h2>
                     </div>
                     <div class="members__slider-wrapper">
                         <div class="members__slider">
-                            <div class="members__slider-inner swiper">
+                            <div class="members__slider-inner swiper" data-watch>
                                 <div class="members__wrapper swiper-wrapper gallery" data-gallery>
-                                    <a class="members__slide swiper-slide gallery__image"
+                                    <a class="members__slide swiper-slide gallery__image _anim-top"
                                         href="@img/content/members/1.jpg">
                                         <img alt="" src="@img/content/members/1.jpg"
                                             class="gallery__preview swiper-lazy">
                                     </a>
-                                    <a class="members__slide swiper-slide gallery__image"
+                                    <a class="members__slide swiper-slide gallery__image _anim-top"
                                         href="@img/content/members/2.jpg">
                                         <img alt="" src="@img/content/members/2.jpg"
                                             class="gallery__preview swiper-lazy">
                                     </a>
-                                    <a class="members__slide swiper-slide gallery__image"
+                                    <a class="members__slide swiper-slide gallery__image _anim-top"
                                         href="@img/content/members/3.jpg">
                                         <img alt="" src="@img/content/members/3.jpg"
                                             class="gallery__preview swiper-lazy">
                                     </a>
-                                    <a class="members__slide swiper-slide gallery__image"
+                                    <a class="members__slide swiper-slide gallery__image _anim-top"
                                         href="@img/content/members/1.jpg">
                                         <img alt="" src="@img/content/members/2.jpg"
                                             class="gallery__preview swiper-lazy">
                                     </a>
-                                    <a class="members__slide swiper-slide gallery__image"
+                                    <a class="members__slide swiper-slide gallery__image _anim-top"
                                         href="@img/content/members/1.jpg">
                                         <img alt="" src="@img/content/members/3.jpg"
                                             class="gallery__preview swiper-lazy">
                                     </a>
                                 </div>
-                                <div class="members__pagination swiper-pagination"></div>
+                                <div class="members__pagination swiper-pagination" data-watch></div>
                             </div>
                         </div>
                     </div>

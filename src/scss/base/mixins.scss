@@ -97,3 +97,24 @@
 		}
 	}
 }
+
+@mixin cascadeDelay($num, $step, $startDelay: 0, $direction: normal) {
+    @if $direction == normal {
+        @for $var from 1 to ($num + 1) {
+            $delay: ($var + $startDelay * 10 - 1) * $step;
+    
+            &:nth-child(#{$var}) {
+                transition-delay: #{$delay + s};
+            }
+        }
+    }
+    @if $direction == reverse {
+        @for $var from 1 to ($num + 1) {
+            $delay: ($var + $startDelay * 10 - 1) * $step;
+    
+            &:nth-child(#{$num + 1 - $var}) {
+                transition-delay: #{$delay + s};
+            }
+        }
+    }
+}

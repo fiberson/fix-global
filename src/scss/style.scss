@@ -66,6 +66,7 @@ body {
     background: $mainBgColor;
     font-weight: 400;
     line-height: math.div(28 , 20);
+    @include adaptiveValue("font-size", 20, 16);
 	// Скролл заблокирован
 	.lock & {
 		overflow: hidden;

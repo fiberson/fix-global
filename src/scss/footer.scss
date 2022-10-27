@@ -1,17 +1,28 @@
 //====================================================================================================
 
 .footer {
-    background: #211E29;
-    @include adaptiveValue("padding-top", 108, 60);
-    @include adaptiveValue("padding-bottom", 190, 90);
-    @include adaptiveValue("font-size", 20, 16, $containerWidth, 992, 2);
-    @include adaptiveValue("font-size", 20, 16, 992, 320, 3);
 
     line-height: math.div(24, 20);
 
+    &__inner {
+        background: #211E29;
+        @include adaptiveValue("padding-top", 108, 60);
+        @include adaptiveValue("padding-bottom", 190, 90);
+        @include adaptiveValue("font-size", 20, 16, $containerWidth, 992, 2);
+        @include adaptiveValue("font-size", 20, 16, 992, 320, 3);
+
+        transition: opacity 0s, transform 0s;
+        transform: translateY(30vh);
+        
+        ._watcher-view & {
+            transform: translateY(0);
+            transition: opacity .8s, transform .8s;
+        }
+    }
+
     &__container {}
 
-    &__inner {
+    &__body {
 
         display: grid;
         row-gap: rem(25);
@@ -33,6 +44,22 @@
         display: flex;
         flex-direction: column;
         gap: rem(25);
+
+        transform: translateY(15vh);
+        transition: opacity .3s 0s, transform .3s 0s;
+
+        ._watcher-view & {
+            transition: opacity .8s 0s, transform .8s 0s;
+        }
+
+        @for $var from 1 to (4 + 1) {
+            $delay: ($var - 1) * .2;
+
+            ._watcher-view &:nth-child(#{$var}) {
+                transition-delay: #{$delay + s},
+                #{$delay + s};
+            }
+        }
 
         @media (max-width: $tablet) and (min-width: $mobileSmall) {
 
