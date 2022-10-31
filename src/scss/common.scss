@@ -1,64 +1,124 @@
 // Заголовки, общие БЄМ блоки и проче...
 
-// Анимационные эффекты
+// Анимационные эффекты - начало
 
 ._anim-fade {
     opacity: 0;
-    transition: opacity .8s, transform .8s;
+    transition: opacity .3s, transform .3s;
 
-    &._watcher-view,
-    ._watcher-view & {
+    &._watcher-view {
         opacity: 1;
+        transition: opacity .8s, transform .8s;
     }
 }
 
 ._anim-top {
     transform: translateY(-5vh);
     opacity: 0;
-    transition: opacity .8s, transform .8s;
+    transition: opacity .3s, transform .3s;
 
-    &._watcher-view,
-    ._watcher-view & {
+    &._watcher-view {
         opacity: 1;
         transform: translateY(0%);
+        transition: opacity .8s, transform .8s;
     }
 }
 
 ._anim-left {
     transform: translateX(-10vw);
     opacity: 0;
-    transition: opacity .8s, transform .8s;
+    transition: opacity .3s, transform .3s;
 
-    &._watcher-view,
-    ._watcher-view & {
+    &._watcher-view {
         opacity: 1;
         transform: translateX(0%);
+        transition: opacity .8s, transform .8s;
     }
 }
 
 ._anim-right {
     transform: translateX(10vw);
     opacity: 0;
-    transition: opacity .8s, transform .8s;
+    transition: opacity .3s, transform .3s;
 
-    &._watcher-view,
-    ._watcher-view & {
+    &._watcher-view {
         opacity: 1;
         transform: translateX(0%);
+        transition: opacity .8s, transform .8s;
     }
 }
 
 ._anim-bottom {
     transform: translateY(5vh);
     opacity: 0;
-    transition: opacity .8s, transform .8s;
+    transition: opacity .3s, transform .3s;
 
-    &._watcher-view,
+    &._watcher-view {
+        opacity: 1;
+        transform: translateY(0%);
+        transition: opacity .8s, transform .8s;
+    }
+}
+
+._anim-child-fade {
+    opacity: 0;
+    transition: opacity .3s, transform .3s;
+
+    ._watcher-view & {
+        opacity: 1;
+        transition: opacity .8s, transform .8s;
+    }
+}
+
+._anim-child-top {
+    transform: translateY(-5vh);
+    opacity: 0;
+    transition: opacity .3s, transform .3s;
+
     ._watcher-view & {
         opacity: 1;
         transform: translateY(0%);
+        transition: opacity .8s, transform .8s;
     }
 }
+
+._anim-child-left {
+    transform: translateX(-10vw);
+    opacity: 0;
+    transition: opacity .3s, transform .3s;
+
+    ._watcher-view & {
+        opacity: 1;
+        transform: translateX(0%);
+        transition: opacity .8s, transform .8s;
+    }
+}
+
+._anim-child-right {
+    transform: translateX(10vw);
+    opacity: 0;
+    transition: opacity .3s, transform .3s;
+
+    ._watcher-view & {
+        opacity: 1;
+        transform: translateX(0%);
+        transition: opacity .8s, transform .8s;
+    }
+}
+
+._anim-child-bottom {
+    transform: translateY(5vh);
+    opacity: 0;
+    transition: opacity .3s, transform .3s;
+
+    ._watcher-view & {
+        opacity: 1;
+        transform: translateY(0%);
+        transition: opacity .8s, transform .8s;
+    }
+}
+
+// Анимационные эффекты - конец
 
 .logo {
     display: inline-block;
@@ -112,6 +172,7 @@
 
 .heading {
     @include adaptiveValue("font-size", 40, 26);
+    font-weight: 700;
     line-height: math.div(49, 40);
     text-align: center;
     margin-bottom: em(47, 40);
@@ -125,20 +186,28 @@
         transform: translate(-50%, -50%);
         z-index: -1;
 
-        text-transform: uppercase;
         font-weight: 700;
-        font-size: rem(200);
-        line-height: .7;
+        @include adaptiveValue("font-size", 200, 50);
+        line-height: 1;
 
-        white-space: nowrap;
-
+        width: calc(100vw - rem(30));
         mix-blend-mode: overlay;
+
+        opacity: 0;
+        transition: opacity .3s 0, transform .3s 0;
+
+        ._watcher-view & {
+            opacity: 1;
+            transition: opacity 1.5s .2s, transform 1.5s .2s;
+        }
     }
 
     &__sub {
-        @include adaptiveValue("font-size", 25, 20);
+        @include adaptiveValue("font-size", 16, 12);
         line-height: math.div(30, 25);
         margin-bottom: em(10, 25);
+        font-weight: 400;
+        text-transform: uppercase;
 
         transition: opacity .3s 0, transform .3s 0;
 
