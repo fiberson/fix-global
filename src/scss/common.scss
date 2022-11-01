@@ -202,6 +202,20 @@
         }
     }
 
+    &__text {
+        @include adaptiveValue("font-size", 25, 18);
+        line-height: math.div(30, 25);
+        margin: 0 auto em(30, 25);
+        font-weight: 400;
+        max-width: rem(800);
+
+        transition: opacity .3s 0, transform .3s 0;
+
+        ._watcher-view & {
+            transition: opacity .8s .2s, transform .8s .2s;
+        }
+    }
+
     &__sub {
         @include adaptiveValue("font-size", 16, 12);
         line-height: math.div(30, 25);

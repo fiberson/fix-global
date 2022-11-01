@@ -17,7 +17,15 @@
     }
 
     &__details {
-        @include adaptiveValue("padding-bottom", 75, 50);
+        @include adaptiveValue("padding-bottom", 76, 50);
+    }
+
+    &__secure {
+        @include adaptiveValue("padding-bottom", 146, 50);
+    }
+
+    &__benefits {
+        @include adaptiveValue("padding-bottom", 240, 100);
     }
 
     &__members {
@@ -378,6 +386,7 @@
             width: 127.4%;
             height: 125.3%;
             transform-origin: 51% 49%;
+            transform: translate(-46%, -38%) rotate(0deg);
 
             animation: rotation1 50s linear infinite;
         }
@@ -387,34 +396,35 @@
             width: 94.7%;
             height: 94.2%;
             transform-origin: 53% 54%;
+            transform: translate(-50%, -40%) rotate(0deg);
 
             animation: rotation2 50s linear infinite reverse;
-        }
-
-        @keyframes rotation1 {
-            from {
-                transform: translate(-46%, -38%) rotate(0deg);
-            }
-
-            to {
-                transform: translate(-46%, -38%) rotate(360deg);
-            }
-        }
-
-        @keyframes rotation2 {
-            from {
-                transform: translate(-50%, -40%) rotate(0deg);
-            }
-
-            to {
-                transform: translate(-50%, -40%) rotate(360deg);
-            }
         }
 
         @media (max-width:$tablet) {
             transform: translate(-52.5%, -63%);
             max-width: rem(500);
         }
+    }
+}
+
+@keyframes rotation1 {
+    from {
+        transform: translate(-46%, -38%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-46%, -38%) rotate(360deg);
+    }
+}
+
+@keyframes rotation2 {
+    from {
+        transform: translate(-50%, -40%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -40%) rotate(360deg);
     }
 }
 
@@ -961,7 +971,7 @@
         &.backlight {
             &::before {
                 content: "";
-                background: url("@img/decor/backlight/pale-blue.svg") 50% 50% / contain no-repeat;
+                background: url("@img/decor/backlight/gray.svg") 50% 50% / contain no-repeat;
                 transform: translate(-50%, -50%) scale(0);
                 opacity: 0;
                 transition: transform 1.5s ease 0s, opacity .8s ease 0s;
@@ -1225,6 +1235,223 @@
             flex-shrink: 0;
 
             transition: all 0.8s;
+        }
+    }
+}
+
+//====================================================================================================
+
+.secure {
+    @include adaptiveValue("font-size", 18, 14);
+    line-height: math.div(26, 18);
+
+    &__container {}
+
+    &__heading {
+        margin-bottom: em(70, 40);
+    }
+
+    &__list {
+        @include gridCards(fit, 290px, 1fr, 30px);
+    }
+
+    &__item {
+        padding: rem(30) rem(20) rem(20) rem(27);
+        border-radius: rem(32);
+        background: #0e0f2466;
+
+        ._watcher-view & {
+            @for $var from 1 to (50 + 1) {
+                $delay: ($var + 0 * 10 - 1) * .2;
+
+                &:nth-child(#{$var}) {
+                    transition-delay: #{$delay + s},
+                    #{$delay + s};
+                }
+            }
+        }
+    }
+
+    &__item-title {
+        font-weight: 600;
+        @include adaptiveValue("font-size", 25, 18);
+        line-height: math.div(36, 25);
+        color: #81D6CC;
+        margin-bottom: em(35, 25);
+    }
+
+    &__item-text {}
+}
+
+//====================================================================================================
+
+.benefits {
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+
+        &.backlight {
+            &::before {
+                content: "";
+                background: url("@img/decor/backlight/light-blue.svg") 50% 50% / contain no-repeat;
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0;
+                transition: transform 1.5s ease 0s, opacity .8s ease 0s;
+                @include adaptiveValue("width", 1850, 1200);
+                @include adaptiveValue("height", 1850, 1200);
+                top: 32%;
+                left: -16%;
+            }
+
+            &::after {
+                content: "";
+                display: block;
+                position: absolute;
+                z-index: -1;
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0;
+                transition: transform 1.5s ease 0s, opacity .8s ease 0s;
+                background: url("@img/decor/backlight/dark-blue.svg") 50% 50% / contain no-repeat;
+                @include adaptiveValue("width", 1850, 1200);
+                @include adaptiveValue("height", 1850, 1200);
+                top: -11%;
+                left: 114%;
+            }
+
+            &._watcher-view {
+
+                &::before,
+                &::after {
+                    transform: translate(-50%, -50%) scale(1);
+                    opacity: 1;
+                    transition: transform 1.5s ease .6s, opacity 1.5s ease .6s;
+                }
+
+                &::after {
+                    transition: transform 2s ease .9s, opacity 2s ease .9s;
+                }
+            }
+        }
+    }
+
+    &__heading {
+        max-width: rem(940);
+        margin: 0 auto em(55, 40);
+
+        .heading__bg-text {
+            @include adaptiveValue("font-size", 200, 80);
+
+            @media (max-width: em(560)){
+                top: 37%;
+            }
+        }
+    }
+
+    &__btn {
+        align-self: center;
+        margin-bottom: rem(85);
+
+        @media (max-width: em(560)) {
+            order: 1;
+        }
+    }
+
+    &__list {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 18%;
+
+        @include adaptiveValue("font-size", 20, 12);
+
+        >* {
+            flex: 1 1 100%;
+        }
+
+        @media (max-width: em(560)) {
+            gap: em(30, 20);
+        }
+    }
+
+    &__list-left,
+    &__list-right {
+        max-width: rem(305);
+    }
+
+    &__list-left {}
+
+    &__list-right {}
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+
+        &:not(:last-child) {
+            margin-bottom: em(55, 20);
+        }
+
+        &::before {
+            content: '';
+            width: em(60, 20);
+            height: em(55, 20);
+            flex-shrink: 0;
+            margin-bottom: em(20, 20);
+            background: url('@img/icons/сheck.svg') 0 0 / 100% no-repeat;
+        }
+
+        &--align-right {
+            align-items: flex-end;
+            text-align: right;
+        }
+    }
+
+    &__img {
+        max-width: rem(580);
+        min-width: rem(280);
+
+        @media (max-width: em(560)) {
+            display: none;
+        }
+    }
+
+    &__img-inner {
+        padding-bottom: 100%;
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 54%;
+            left: 50%;
+            z-index: -2;
+            transform: translate(-50%, -50%);
+            width: 327%;
+            height: 327%;
+            background: url('@img/decor/fix-global.png') 50% 50% / 100% no-repeat;
+
+            opacity: 0;
+            transition: opacity .3s;
+        }
+
+        .benefits__list._watcher-view &::before,
+        .benefits__img-mobile._watcher-view &::before {
+            opacity: 1;
+            transition: opacity 2.4s;
+        }
+    }
+
+    &__img-mobile {
+        @media (min-width: em(560)) {
+            display: none;
+        }
+
+        width: 70%;
+        align-self: center;
+        padding-bottom: 44%;
+
+        @media (max-width: em(560)) {
+            order: 2;
         }
     }
 }
