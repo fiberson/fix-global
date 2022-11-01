@@ -410,20 +410,32 @@
 
 @keyframes rotation1 {
     from {
+        top: 50%;
+        left: 50%;
+        transform-origin: 51% 49%;
         transform: translate(-46%, -38%) rotate(0deg);
     }
 
     to {
+        top: 50%;
+        left: 50%;
+        transform-origin: 51% 49%;
         transform: translate(-46%, -38%) rotate(360deg);
     }
 }
 
 @keyframes rotation2 {
     from {
+        top: 50%;
+        left: 50%;
+        transform-origin: 53% 54%;
         transform: translate(-50%, -40%) rotate(0deg);
     }
 
     to {
+        top: 50%;
+        left: 50%;
+        transform-origin: 53% 54%;
         transform: translate(-50%, -40%) rotate(360deg);
     }
 }
