@@ -7,7 +7,7 @@
 // Подключаем слайдер Swiper из node_modules
 // При необходимости подключаем дополнительные модули слайдера, указывая их в {} через запятую
 // Пример: { Navigation, Autoplay }
-import Swiper, { Pagination, Autoplay, Lazy } from 'swiper';
+import Swiper, { Navigation, Pagination, Autoplay, Lazy } from 'swiper';
 /*
 Основниые модули слайдера:
 Navigation, Pagination, Autoplay, 
@@ -59,7 +59,7 @@ function initSliders() {
     }
     if (document.querySelector('.members__slider-inner')) {
         new Swiper('.members__slider-inner', {
-            modules: [Pagination, Lazy],
+            modules: [Navigation, Pagination, Lazy],
             observer: true,
             observeParents: true,
             slidesPerView: 1,
@@ -71,6 +71,10 @@ function initSliders() {
                 type: 'bullets',
                 clickable: true,
             },
+            navigation: {
+                prevEl: '.members__prev',
+                nextEl: '.members__next',
+            },
 
             breakpoints: {
                 480: {
@@ -80,6 +84,7 @@ function initSliders() {
                     slidesPerView: 3,
                 },
             },
+
             lazy: true,
         });
     }
