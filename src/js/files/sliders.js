@@ -32,7 +32,7 @@ function initSliders() {
             modules: [Autoplay],
             observer: true,
             observeParents: true,
-            slidesPerView: 2,
+            slidesPerView: 3,
             spaceBetween: 15,
             loop: true,
             allowTouchMove: false,
@@ -49,9 +49,6 @@ function initSliders() {
 
             breakpoints: {
                 480: {
-                    slidesPerView: 3,
-                },
-                992: {
                     slidesPerView: 4,
                 },
             },
