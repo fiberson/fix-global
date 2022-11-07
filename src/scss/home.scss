@@ -152,7 +152,8 @@
         .z-layers {
             transition: all 0.3s ease 0s;
         }
-        &:hover{
+
+        &:hover {
             .z-layers {
                 transform: rotateX(15deg) rotateY(-15deg);
             }
@@ -233,6 +234,10 @@
 
 .history {
     &__container {}
+
+    &__map {
+        @include adaptiveValue("margin-bottom", 160, 75);
+    }
 
     &__img-box {
         @include adaptiveValue("margin-bottom", 120, 55);
@@ -448,6 +453,126 @@
         left: 50%;
         transform-origin: 53% 54%;
         transform: translate(-50%, -40%) rotate(360deg);
+    }
+}
+
+.history-map {
+    position: relative;
+    padding-bottom: 74.4%;
+
+    &.backlight {
+        &::before {
+            content: "";
+            background: url("@img/decor/backlight/purple.svg") 50% 50% / contain no-repeat;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            transition: transform 1.5s ease 0s, opacity .8s ease 0s;
+            top: 20%;
+            left: -20%;
+        }
+
+        &._watcher-view {
+            &::before {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+                transition: transform 1.5s ease .4s, opacity 1.5s ease .4s;
+            }
+        }
+    }
+
+    &._watcher-view .history-map__img {
+        opacity: 1;
+        transition: opacity 1.5s, transform 1.5s;
+
+        @for $var from 1 to (50 + 1) {
+            $delay: ($var + 0 * 10 - 1) * .2;
+
+            &:nth-child(#{$var}) {
+                transition-delay: #{$delay + s},
+                #{$delay + s};
+            }
+        }
+    }
+
+    &__img {
+        position: absolute;
+
+        opacity: 0;
+        transition: opacity .3s, transform .3s;
+
+        &:nth-child(1) {
+            top: 12%;
+            left: 24%;
+            width: 17.4%;
+        }
+
+        &:nth-child(2) {
+            top: 7%;
+            left: 57.4%;
+            width: 15.3%;
+        }
+
+        &:nth-child(3) {
+            top: 5%;
+            left: 83%;
+            width: 20%;
+        }
+
+        &:nth-child(4) {
+            top: 33%;
+            left: 77.8%;
+            width: 22%;
+        }
+
+        &:nth-child(5) {
+            top: 43%;
+            left: 42.6%;
+            width: 24.3%;
+        }
+
+        &:nth-child(6) {
+            top: 32.2%;
+            left: 1.3%;
+            width: 15.4%;
+        }
+
+        &:nth-child(7) {
+            top: 83.8%;
+            left: 28%;
+            width: 18.3%;
+        }
+        
+        &:nth-child(8) {
+            top: 76.4%;
+            left: 79%;
+            width: 22.8%;
+        }
+    }
+
+    &__text {
+        position: absolute;
+        top: 52%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 92.5%;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &__markup {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 147%;
+        mix-blend-mode: soft-light;
+        z-index: -1;
+
+        img {
+            width: 100%;
+        }
     }
 }
 
@@ -1296,11 +1421,19 @@
     }
 
     &__item-title {
-        font-weight: 600;
         @include adaptiveValue("font-size", 25, 18);
+        margin-bottom: em(35, 25);
+        font-weight: 600;
         line-height: math.div(36, 25);
         color: $accentTextColor;
-        margin-bottom: em(35, 25);
+
+        display: flex;
+        justify-content: space-between;
+        gap: rem(30);
+
+        img {
+            @include adaptiveValue("width", 66, 44);
+        }
     }
 
     &__item-text {}
