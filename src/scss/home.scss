@@ -500,6 +500,10 @@
         opacity: 0;
         transition: opacity .3s, transform .3s;
 
+        * {
+            width: 100%;
+        }
+
         &:nth-child(1) {
             top: 12%;
             left: 24%;
